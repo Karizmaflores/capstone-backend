@@ -6,6 +6,7 @@ const app = express();
 const usersRouter = require("./src/routes/users");
 const signupRouter = require("./src/routes/signup");
 const signinRouter = require("./src/routes/signin");
+const vinylRouter = require("./src/routes/vinyl");
 
 //middleware
 const authenticateJWT = require("./src/auth");
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/", usersRouter);
 app.use("/", signupRouter);
 app.use("/", signinRouter);
+app.use("/", authenticateJWT, vinylRouter);
 
 app.get("/", (req, res) => {
     res.json({

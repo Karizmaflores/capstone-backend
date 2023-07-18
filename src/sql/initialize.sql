@@ -6,3 +6,11 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL,
   first_name VARCHAR(255)
 );
+
+CREATE TABLE vinyl (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  album VARCHAR(255) NOT NULL,
+  artist VARCHAR(255) NOT NULL,
+  release_year INT,
+  genre VARCHAR(255)
+);
