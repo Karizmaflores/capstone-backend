@@ -18,12 +18,6 @@ pool.query(`INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)`,
     });
 });
 
-// users.push({
-//     email,
-//     password: hashedPassword,
-// });
-
-res.json(users.at(-1));
 };
 
 module.exports = {
