@@ -6,8 +6,8 @@ const signup = async (req, res) => {
 const { email, password, first_name } = req.body;
 
 const hashedPassword = await bcrypt.hash(password, 8);
-// console.log(password);
-// console.log(hashedPassword);
+console.log(password);
+console.log(hashedPassword);
 
 pool.query(`INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)`,
  ["users","email", "password", "first_name",
