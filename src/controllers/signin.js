@@ -4,30 +4,30 @@ const pool = require("../sql/connection");
 require("dotenv").config();
 
 const signin = (req, res) => {
-    const { email, password } = req.body;
-    // const foundUser = users.find((user) => user.email === email);  
+  const { email, password } = req.body;
+  // const foundUser = users.find((user) => user.email === email);
 
+  pool.query(
+    `SELECT * FROM users WHERE email = ?`,
+    [email],
+    async (err, user, fields) => {
+      const hashedPassword = await bcrypt.compare(password, user[0].password);
 
-    pool.query(`SELECT * FROM users WHERE email = ?`,
-    [email], async (err, user, fields) => {
-       
-    const hashedPassword = await bcrypt.compare(password, user[0].password);
-
-    if(hashedPassword){
-
+      if (hashedPassword) {
         const token = jwt.sign(user[0], process.env.DB_JWT_SECRET);
 
         res.json({
-            token,
+          token,
         });
-         } else{
+      } else {
         res.json({
-            message: 'Email or password is incorrect!',
+          message: "Email or password is incorrect!",
         });
+      }
     }
-  });
+  );
 };
 
 module.exports = {
-    signin,
+  signin,
 };

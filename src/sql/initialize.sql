@@ -14,3 +14,11 @@ CREATE TABLE vinyl (
   release_year INT,
   genre VARCHAR(255)
 );
+
+CREATE TABLE couches (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  material VARCHAR(255) NOT NULL,
+  color VARCHAR(255) NOT NULL,
+  condition VARCHAR(255) NOT NULL,
+  age INT
+);

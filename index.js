@@ -7,7 +7,8 @@ const cors = require("cors");
 const usersRouter = require("./src/routes/users");
 const signupRouter = require("./src/routes/signup");
 const signinRouter = require("./src/routes/signin");
-const vinylRouter = require("./src/routes/vinyl");
+// const vinylRouter = require("./src/routes/vinyl");
+const couchesRouter = require("./src/routes/couches");
 
 //middleware
 const authenticateJWT = require("./src/auth");
@@ -49,7 +50,8 @@ app.use(function (req, res, next) {
 app.use("/", usersRouter);
 app.use("/", signupRouter);
 app.use("/", signinRouter);
-app.use("/", vinylRouter);
+// app.use("/", vinylRouter);
+app.use("/", couchesRouter);
 // app.use("/", authenticateJWT, vinylRouter);
 
 app.get("/", (req, res) => {
