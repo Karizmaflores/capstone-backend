@@ -23,13 +23,17 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-  const { todo, user_id } = req.body;
+  const { material, color, wear, age } = req.body;
   //Abtract the variable values
   pool.query(
-    `INSERT INTO couches (id, material, color, wear, age) VALUES(?, ?, ?, ?, ?)`,
+    `INSERT INTO couches (material, color, wear, age) VALUES(?, ?, ?, ?)`,
     //Dependency array
-    [null, todo, user_id],
+    [material, color, wear, age],
     (err, results, fields) => {
+      if(err){
+        console.log(err);
+        res.json(err);
+      }
       res.json(results);
     }
   );
