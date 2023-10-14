@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
     // );
   
     // Request methods you wish to allow
-    res.setHeader("Access-Control-Allow-Methods", "POST");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT') 
   
     // Request headers you wish to allow
     res.setHeader(
