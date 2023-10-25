@@ -20,10 +20,10 @@ app.use(cors());
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
     // !!THiS IS FOR DEV - We replace this once we have our production URL in place.
-    // res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
 
     //FOR PRODUCTION
-    res.setHeader("Access-Control-Allow-Origin", "https://bespoke-salmiakki-49f7a4.netlify.app");
+    // res.setHeader("Access-Control-Allow-Origin", "https://bespoke-salmiakki-49f7a4.netlify.app");
     // res.setHeader(
     //   "Access-Control-Allow-Origin",
     //   "https://melodious-churros-bab5cd.netlify.app"
@@ -49,7 +49,7 @@ app.use(function (req, res, next) {
 app.use("/", usersRouter);
 app.use("/", signupRouter);
 app.use("/", signinRouter);
-app.use("/", authenticateJWT,couchesRouter);
+app.use("/", couchesRouter);
 
 
 app.get("/", (req, res) => {

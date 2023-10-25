@@ -53,9 +53,29 @@ const update = (req, res) => {
   );
 };
 
+const remove = (req, res) => {
+  const { id } = req.params;
+  pool.query(
+    `DELETE FROM couches WHERE id = ?`,
+    [id],
+    (err, result) => {
+      if (err) {
+        res.status(500).json({ error: 'Failed to delete couch' });
+      } else {
+        if (result.affectedRows === 0) {
+          res.status(404).json({ error: 'Couch not found' });
+        } else {
+          res.json({ message: 'Couch deleted successfully' });
+        }
+      }
+    }
+  );
+};
+
 module.exports = {
   list,
   show,
   create,
   update,
+  remove,
 };
